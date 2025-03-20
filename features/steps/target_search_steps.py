@@ -25,33 +25,33 @@ def verify_search_result(context):
 
 @when('Click on cart')
 def click_cart(context):
-    context.driver.find_element(By.XPATH, "//div[@data-test='@web/CartIcon']").click()
+    context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/CartIcon']").click()
     sleep(3)
 
 
 @then('Verify cart is empty')
 def verify_cart_empty(context):
-    actual_text = context.driver.find_element(By.XPATH, "//div[@data-test='boxEmptyMsg']").text
+    actual_text = context.driver.find_element(By.CSS_SELECTOR, "[data-test=boxEmptyMsg]").text
     expected_text = 'Your cart is empty'
     assert expected_text in actual_text
 
 
 @when('Click Sign in')
 def click_sign_in(context):
-    context.driver.find_element(By.ID, 'account-sign-in').click()
+    context.driver.find_element(By.CSS_SELECTOR, '#account-sign-in').click()
     sleep(3)
 
 
 @when('Click Sign in from menu')
 def click_sign_in_from_menu(context):
-    context.driver.find_element(By.XPATH, "//button[@data-test='accountNav-signIn']").click()
+    context.driver.find_element(By.CSS_SELECTOR, "[data-test='accountNav-signIn']").click()
     sleep(3)
 
 
 @then('Verify Sign in form opened')
 def verify_sign_in_page(context):
-    context.driver.find_element(By.ID, 'login')
+    context.driver.find_element(By.CSS_SELECTOR, '#login')
     sleep(3)
-    result = context.driver.find_element(By.XPATH, "//span[text()='Sign into your Target account']").text
+    result = context.driver.find_element(By.CSS_SELECTOR, "[class*='styles_ndsHeading']").text
     expected = 'Sign into your Target account'
     assert expected in result
