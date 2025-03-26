@@ -17,7 +17,7 @@ def open_target_page(context):
 def search_product(context, product):
     context.driver.find_element(*SEARCH_FIELD).send_keys(product)
     context.driver.find_element(*SEARCH_BTN).click()
-    sleep(3)
+    sleep(6)
 
 
 @when('Click on cart')
