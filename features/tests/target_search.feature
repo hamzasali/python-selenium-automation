@@ -29,7 +29,18 @@ Feature: Target search test cases
     When Search for <search_word>
     Then Verify correct search result shown for <expected_result>
     Examples:
-    |search_word  |expected_result  |
-    |tea          |tea              |
-    |iPhone       |iPhone           |
-    |shoes        |shoes            |
+      | search_word | expected_result |
+      | tea         | tea             |
+      | iPhone      | iPhone          |
+      | shoes       | shoes           |
+
+
+  Scenario: User can add any product in cart
+    Given Open target main page
+    When Search for mugs
+    When Click add to cart btn
+    And Store product name
+    When Confirm Add to Cart button from side navigation
+    When Open Cart
+    Then Verify Cart has 1 item
+    Then Verify cart has correct product
