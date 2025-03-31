@@ -18,16 +18,14 @@ def verify_search_result(context, expected_text):
 @when('Click add to cart btn')
 def click_add_to_cart(context):
     # context.driver.execute_script("window.scrollTo(0, 1200);")
-    sleep(3)
     # context.driver.find_elements(*ADD_TO_CART_BTN)[2].click()
     context.driver.find_element(*ADD_TO_CART_BTN).click()
-    sleep(4)
+    context.driver.wait.until(EC.element_to_be_clickable(ADD_TO_CART_BTN_SIDE_NAV))
 
 
 @when('Confirm Add to Cart button from side navigation')
 def side_nav_click_add_to_cart(context):
     context.driver.find_element(*ADD_TO_CART_BTN_SIDE_NAV).click()
-    sleep(5)
 
 
 @when('Store product name')
