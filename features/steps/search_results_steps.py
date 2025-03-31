@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from behave import given, when, then
 from time import sleep
 
@@ -16,7 +17,7 @@ def verify_search_result(context, expected_text):
 
 @when('Click add to cart btn')
 def click_add_to_cart(context):
-    context.driver.execute_script("window.scrollTo(0, 1200);")
+    # context.driver.execute_script("window.scrollTo(0, 1200);")
     sleep(3)
     # context.driver.find_elements(*ADD_TO_CART_BTN)[2].click()
     context.driver.find_element(*ADD_TO_CART_BTN).click()
@@ -31,5 +32,7 @@ def side_nav_click_add_to_cart(context):
 
 @when('Store product name')
 def store_product_name(context):
+    context.driver.wait.until(EC.visibility_of_element_located(SIDE_NAV_PRODUCT_NAME),
+                              message='product name not visible')
     context.product_name = context.driver.find_element(*SIDE_NAV_PRODUCT_NAME).text
     print("Product name stored: ", context.product_name)
