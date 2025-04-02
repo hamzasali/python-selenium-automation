@@ -1,5 +1,6 @@
 Feature: Target search test cases
 
+#
 #  Scenario: User can search for a product on Target
 #    Given Open target main page
 #    When Search for tea
@@ -16,7 +17,7 @@ Feature: Target search test cases
 #    Given Open target main page
 #    When Search for shoes
 #    Then Verify correct search result shown for shoes
-#
+
 
   Scenario: User can sign in
     Given Open target main page

@@ -11,8 +11,7 @@ SIDE_NAV_PRODUCT_NAME = (By.CSS_SELECTOR, "[data-test='content-wrapper'] h4")
 
 @then('Verify correct search result shown for {expected_text}')
 def verify_search_result(context, expected_text):
-    actual_text = context.driver.find_element(*SEARCH_RESULTS_TEXT).text
-    assert expected_text in actual_text, f'Error. Text {expected_text} not in {actual_text}'
+    context.app.search_result_page.verify_search_result(expected_text)
 
 
 @when('Click add to cart btn')

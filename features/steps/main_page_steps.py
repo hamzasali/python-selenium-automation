@@ -4,26 +4,23 @@ from behave import given, when, then
 from time import sleep
 
 SEARCH_FIELD = (By.ID, 'search')
-SEARCH_BTN = (By.XPATH, "//button[@data-test='@web/Search/SearchButton']")
-CART_ICON = (By.CSS_SELECTOR, "[data-test='@web/CartIcon']")
 HEADER_LINKS = (By.CSS_SELECTOR, "[id*=utilityNav]")
 
 
 @given('Open target main page')
 def open_target_page(context):
-    context.driver.get('https://www.target.com/')
+    context.app.main_page.open_main_page()
 
 
 @when('Search for {product}')
 def search_product(context, product):
-    context.driver.find_element(*SEARCH_FIELD).send_keys(product)
-    context.driver.find_element(*SEARCH_BTN).click()
+    context.app.header.search(product)
     sleep(12)
 
 
 @when('Click on cart')
 def click_cart(context):
-    context.driver.find_element(*CART_ICON).click()
+    context.app.header.click_cart()
     context.driver.wait.until(EC.url_matches('https://www.target.com/cart'))
 
 
