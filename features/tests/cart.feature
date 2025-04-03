@@ -4,3 +4,4 @@ Feature: Cart tests
     Given Open target main page
     When Click on cart
     Then Verify cart is empty
+    And Verify cart page opens

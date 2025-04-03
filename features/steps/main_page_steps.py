@@ -3,7 +3,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from behave import given, when, then
 from time import sleep
 
-SEARCH_FIELD = (By.ID, 'search')
 HEADER_LINKS = (By.CSS_SELECTOR, "[id*=utilityNav]")
 
 
@@ -34,6 +33,12 @@ def click_sign_in(context):
 def verify_header_link_shown(context):
     links = context.driver.find_element(*HEADER_LINKS)
     print(links)
+    # Stale Element Reference Ex
+    # print("Before refresh:", link)
+    # context.driver.refresh()
+    # link = context.driver.find_element(*HEADER_LINKS)
+    # link.click()
+    # print("AFTER refresh:", link)
 
 
 @then('Verify {link_amount} links are shown')

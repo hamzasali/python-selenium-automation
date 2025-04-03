@@ -11,7 +11,11 @@ SIDE_NAV_PRODUCT_NAME = (By.CSS_SELECTOR, "[data-test='content-wrapper'] h4")
 
 @then('Verify correct search result shown for {expected_text}')
 def verify_search_result(context, expected_text):
-    context.app.search_result_page.verify_search_result(expected_text)
+    context.app.search_results_page.verify_search_result(expected_text)
+
+@then('Verify {expected_text} in URL')
+def verify_results_url(context, expected_text):
+    context.app.search_results_page.verify_results_url(expected_text)
 
 
 @when('Click add to cart btn')

@@ -1,10 +1,12 @@
 Feature: Target search test cases
 
-#
-#  Scenario: User can search for a product on Target
-#    Given Open target main page
-#    When Search for tea
-#    Then Verify correct search result shown for tea
+
+  Scenario: User can search for a product on Target
+    Given Open target main page
+    When Search for tea
+    Then Verify correct search result shown for tea
+    Then Verify tea in URL
+
 #
 #
 #  Scenario: User can search for a product on Target
@@ -25,15 +27,15 @@ Feature: Target search test cases
     When Click Sign in from menu
     Then Verify Sign in form opened
 
-  Scenario Outline: User can search for a product on Target
-    Given Open target main page
-    When Search for <search_word>
-    Then Verify correct search result shown for <expected_result>
-    Examples:
-      | search_word | expected_result |
-      | tea         | tea             |
-      | iPhone      | iPhone          |
-      | shoes       | shoes           |
+#  Scenario Outline: User can search for a product on Target
+#    Given Open target main page
+#    When Search for <search_word>
+#    Then Verify correct search result shown for <expected_result>
+#    Examples:
+#      | search_word | expected_result |
+#      | tea         | tea             |
+#      | iPhone      | iPhone          |
+#      | shoes       | shoes           |
 
 
   Scenario: User can add any product in cart
