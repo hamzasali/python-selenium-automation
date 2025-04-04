@@ -8,7 +8,6 @@ Feature: Target search test cases
     Then Verify tea in URL
 
 #
-#
 #  Scenario: User can search for a product on Target
 #    Given Open target main page
 #    When Search for iPhone
@@ -19,14 +18,8 @@ Feature: Target search test cases
 #    Given Open target main page
 #    When Search for shoes
 #    Then Verify correct search result shown for shoes
-
-
-  Scenario: User can sign in
-    Given Open target main page
-    When Click Sign in
-    When Click Sign in from menu
-    Then Verify Sign in form opened
-
+#
+#
 #  Scenario Outline: User can search for a product on Target
 #    Given Open target main page
 #    When Search for <search_word>

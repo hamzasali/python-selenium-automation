@@ -3,6 +3,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from behave import given, when, then
 from time import sleep
 
+import app
+
 HEADER_LINKS = (By.CSS_SELECTOR, "[id*=utilityNav]")
 
 
@@ -25,8 +27,8 @@ def click_cart(context):
 
 @when('Click Sign in')
 def click_sign_in(context):
-    context.driver.find_element(By.CSS_SELECTOR, '#account-sign-in').click()
-    context.driver.wait.until(EC.element_to_be_clickable(((By.CSS_SELECTOR, "[data-test='accountNav-signIn']"))))
+    context.app.header.click_sign_in()
+    # context.driver.wait.until(EC.element_to_be_clickable(((By.CSS_SELECTOR, "[data-test='accountNav-signIn']"))))
 
 
 @then('Verify at least 1 links shown')
