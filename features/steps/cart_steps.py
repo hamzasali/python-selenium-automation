@@ -2,8 +2,6 @@ from selenium.webdriver.common.by import By
 from behave import given, when, then
 from time import sleep
 
-EMPTY_CART_MSG = (By.CSS_SELECTOR, "[data-test=boxEmptyMsg]")
-CART_SUMMARY = (By.XPATH, "//div[./span[contains(text(), 'subtotal')]]")
 CART_ITEM_TITLE = (By.CSS_SELECTOR, "[data-test='cartItem-title']")
 
 
@@ -14,12 +12,12 @@ def verify_cart_empty(context):
 
 @when('Open Cart')
 def open_cart(context):
-    context.driver.get("https://www.target.com/cart")
+    context.app.cart_page.open_cart()
 
 
 @then('Verify Cart has {quantity} item')
 def verify_cart_has_one_item(context, quantity):
-    context.driver.find_element(*CART_SUMMARY)
+    context.app.cart_page.verify_cart_has_items()
 
 
 @then('Verify cart has correct product')
