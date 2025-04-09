@@ -2,7 +2,7 @@ from behave import when, then, given
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 
-TERM_CONDITIONS_BTN = (By.CSS_SELECTOR, "[data-test='@web/component-footer/LegalLink'][href*='terms-conditions']")
+TERM_CONDITIONS_BTN = (By.CSS_SELECTOR, "[data-behavior='redirectToSpotPage'][href*='terms-conditions']")
 
 
 @when('Click Sign in from menu')
@@ -23,3 +23,8 @@ def click_target_terms_and_conditions_link(context):
 @then('Verify Terms and Conditions page is opened')
 def verify_terms_and_conditions_page(context):
     context.app.sign_in_page.verify_partial_url('terms-conditions')
+
+@when('Enter {email}')
+def enter_email(context, email):
+    context.app.sign_in_page.input_text(email, By.CSS_SELECTOR, "input")
+    context.app.sign_in_page.wait_until_clickable_click(By.CSS_SELECTOR, "#login")
