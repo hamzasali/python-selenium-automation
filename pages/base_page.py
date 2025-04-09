@@ -36,6 +36,20 @@ class Page:
     def wait_until_invisible(self, *locator):
         self.wait.until(EC.invisibility_of_element_located(*locator), message=f'Element still visible by {locator}')
 
+    def get_current_window_handle(self):
+        return self.driver.current_window_handle
+
+    def switch_to_new_window(self):
+        self.wait.until(EC.new_window_is_opened)
+        all_windows = self.driver.window_handles
+        print('Current windows ', all_windows)
+        print('Switching to window: ', all_windows[1])
+        self.driver.switch_to.window(all_windows[1])
+
+    def switch_to_window_by_id(self, window_id):
+        print('Switching to window: ', window_id)
+        self.driver.switch_to.window(window_id)
+
     def verify_text(self, expected_text, *locator):
         actual_text = self.find_element(*locator).text
         assert expected_text == actual_text, f'Expected text "{expected_text}" did not match actual "{actual_text}"'
@@ -55,3 +69,6 @@ class Page:
         # print(f'Current URL {current_url}')
         # assert expected_partial_url in current_url, f'Expected text "{expected_partial_url}" not in "{current_url}"'
         self.wait.until(EC.url_contains(expected_partial_url), message=f'URL does not contains {expected_partial_url}')
+
+    def close(self):
+        self.driver.close()

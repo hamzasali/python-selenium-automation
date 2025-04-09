@@ -8,14 +8,15 @@ class CartPage(Page):
     CART_SUMMARY = (By.XPATH, "//div[./span[contains(text(), 'subtotal')]]")
     CART_ITEM_TITLE = (By.CSS_SELECTOR, "[data-test='cartItem-title']")
 
+    def open_cart(self):
+        self.open_url(f'{self.base_url}cart')
+    def cart_item_title(self):
+        return self.find_element(*self.CART_ITEM_TITLE).text
     def verify_cart_empty(self):
         self.verify_text('Your cart is empty', *self.EMPTY_CART_MSG)
 
     def verify_cart_page_opens(self):
         self.verify_url(f'{self.base_url}cart')
-
-    def open_cart(self):
-        self.open_url(f'{self.base_url}cart')
 
     def verify_cart_has_items(self):
         self.find_element(*self.CART_SUMMARY)

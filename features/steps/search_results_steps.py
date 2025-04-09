@@ -31,5 +31,6 @@ def side_nav_click_add_to_cart(context):
 def store_product_name(context):
     context.driver.wait.until(EC.visibility_of_element_located(SIDE_NAV_PRODUCT_NAME),
                               message='product name not visible')
-    context.product_name = context.driver.find_element(*SIDE_NAV_PRODUCT_NAME).text
+    # context.product_name = context.driver.find_element(*SIDE_NAV_PRODUCT_NAME).text
+    context.product_name = context.app.side_menu.store_product_name()
     print("Product name stored: ", context.product_name)
