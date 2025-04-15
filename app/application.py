@@ -6,6 +6,7 @@ from pages.search_results_page import SearchResultsPage
 from pages.side_menu import SideMenu
 from pages.sign_in_page import SignInPage
 from pages.target_app_page import TargetAppPage
+from pages.help_page import HelpPage
 
 
 class Application:
@@ -20,3 +21,4 @@ class Application:
         self.side_menu = SideMenu(driver)
         self.sign_in_page = SignInPage(driver)
         self.target_app_page = TargetAppPage(driver)
+        self.help_page = HelpPage(driver)
