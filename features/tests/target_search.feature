@@ -1,6 +1,6 @@
 Feature: Target search test cases
 
-
+  @smoke
   Scenario: User can search for a product on Target
     Given Open target main page
     When Search for tea
@@ -30,7 +30,7 @@ Feature: Target search test cases
 #      | iPhone      | iPhone          |
 #      | shoes       | shoes           |
 
-
+  @smoke
   Scenario: User can add any product in cart
     Given Open target main page
     When Search for mugs

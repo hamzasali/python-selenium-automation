@@ -1,6 +1,7 @@
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+from support.logger import logger
 
 
 class Page:
@@ -11,6 +12,7 @@ class Page:
         self.wait = WebDriverWait(self.driver, 10)
 
     def open_url(self, url):
+        logger.info(f'Opening url {url}')
         self.driver.get(url)
 
     def find_element(self, *locator):
@@ -20,9 +22,11 @@ class Page:
         return self.driver.find_elements(*locator)
 
     def click(self, *locator):
+        logger.info(f'Clicking by {locator}...')
         self.driver.find_element(*locator).click()
 
     def input_text(self, text, *locator):
+        logger.info(f'Entering text {text} by {locator}...')
         self.driver.find_element(*locator).send_keys(text)
 
     def wait_until_clickable(self, *locator):

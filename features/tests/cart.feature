@@ -1,5 +1,6 @@
 Feature: Cart tests
 
+  @smoke
   Scenario: User can check if cart is empty
     Given Open target main page
     When Click on cart
